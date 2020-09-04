@@ -1,0 +1,26 @@
+import java.util.*;
+import java.io.*;
+
+public class RandomWord
+{
+  ArrayList<String> list;
+  
+  public RandomWord(String fileName) throws FileNotFoundException
+  {
+    File file = new File(fileName);
+    this.list = new ArrayList<String>();
+    Scanner in = new Scanner(file);
+    while(in.hasNext())
+    {
+      String word = in.next();
+      list.add(word);
+    }
+  }
+  
+  public String next()
+  {
+    Random whichWord = new Random();
+    String nextWord = this.list.get(whichWord.nextInt(this.list.size()));
+    return nextWord;
+  }
+}
